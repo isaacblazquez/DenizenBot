@@ -1,0 +1,26 @@
+Este es un listado de checkpoint para dividir la creacion del bot en tramos mas pequeños e ir avanzando en la construccion y programacion de nuevas rutinas y mejoras.
+
+1.- Construccion de chasis 
+
+2.- Motorizacion de patas
+
+3.- Instalacion de Arduino y shield, conexion de servomotores y bateria
+  3.1 Prueba de movimientos
+
+4.- Realizacion de codigo de movimientos de servos 
+  
+    4.-1 Implementar el movimiento hacia delante y hacia atras
+    4.-2 Implementar el movimiento de giro sobre su eje
+    4.-3 Codigo de movimiento de servos para modo reposo
+    4.-4 Codigo de movimiento de servos para WakeUp
+    4.-5 Medicion de distancia recorrida desde encendido (necesario para cuando queramos tener logs o similares)
+    
+5.- Instalacion de sensor de ultrasonido
+    5.1 Codigo de deteccion por ultrasonidos
+
+6.- Instalacion de sensor de luz
+    6.1 Codigo de deteccion de luz (evitar luz)
+
+7.-
+    
+    
