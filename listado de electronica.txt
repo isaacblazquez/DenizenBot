@@ -1,0 +1,18 @@
+Procesador Arduino Mega
+
+Motorizacion Ruedas L298N 
+
+Motores DC 12V
+
+Bateria 2s Lipo
+
+Arduino Shield Mega V2
+
+Sensor Ultra sonido hc-sr04
+
+Sensor IR
+
+Servo Motor 9g
+
+Sensor de obstaculos por golpe
+
