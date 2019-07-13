@@ -1,26 +1,63 @@
 Este es un listado de checkpoint para dividir la creacion del bot en tramos mas pequeños e ir avanzando en la construccion y programacion de nuevas rutinas y mejoras.
 
-1.- Construccion de chasis 
+0.- Listado de piezas para la construccion
+  0.0.- Chasis 3D
+    0.0.1.- Para ruedas
+    0.0.2.- Para patas
+    
+  0.1.- Motorizacion
+  0.2.- Procesador
+  0.3.- Sensores
+  
+1.- Construccion de chasis
+  1.1 Piezas 3D
 
-2.- Motorizacion de patas
+2. Motorizacion
+  2.1 Movimiento con ruedas
+    2.1.0 Movimiento hacia delante y hacia atras
+    2.1.1 Movimiento de giro izquierda y derecha
+    2.1.2 Movimiento de giro sobre centro (45/90/180)
+    2.1.3 Velocidad de movimiento
+  2.2- Motorizacion de patas 
 
 3.- Instalacion de Arduino y shield, conexion de servomotores y bateria
   3.1 Prueba de movimientos
 
 4.- Realizacion de codigo de movimientos de servos 
-  
-    4.-1 Implementar el movimiento hacia delante y hacia atras
-    4.-2 Implementar el movimiento de giro sobre su eje
-    4.-3 Codigo de movimiento de servos para modo reposo
-    4.-4 Codigo de movimiento de servos para WakeUp
-    4.-5 Medicion de distancia recorrida desde encendido (necesario para cuando queramos tener logs o similares)
+  4.-1 Implementar el movimiento hacia delante y hacia atras
+  4.-2 Implementar el movimiento de giro sobre su eje
+  4.-3 Codigo de movimiento de servos para modo reposo
+  4.-4 Codigo de movimiento de servos para WakeUp
+  4.-5 Medicion de distancia recorrida desde encendido (necesario para cuando queramos tener logs o similares)
     
 5.- Instalacion de sensor de ultrasonido
-    5.1 Codigo de deteccion por ultrasonidos
+  5.1 Codigo de deteccion por ultrasonidos
+  5.2 Servo motor en ultrasonido para barrido
 
 6.- Instalacion de sensor de luz
-    6.1 Codigo de deteccion de luz (evitar luz)
+  6.0 Fabricacion de sensor de luz (opcional)
+  6.1 Codigo de deteccion de luz (evitar luz / buscar zona luminosa)
 
-7.-
+7.-Instalacion de sensor de IR inferior
+  7.1 Evitar caidas a diferente altura
+  7.2 Seguir lineas
+  
+8.-Instalacion de leds
+  8.1 Leds de posicion
+  8.2 Leds para oscuridad
+  8.3 Leds RGB para mostrar modo de programa en ejecucion
+
+9.-Instalacion de microfono (detector de sonido)
+  9.1 Codigo para buscar sonidos
+  9.3 Codigo para huir de sonidos
+
+10.-Instalacion de sensor de calor
+  10.1 Codigo para buscar zona fresca
+  10.2 Codigo para buscar zona calurosa
+  
+
+    
+
+    
     
     
