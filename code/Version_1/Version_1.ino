@@ -25,9 +25,7 @@ int buttonStateI = 0;         // variable for reading the pushbutton status
 int MAX_VEL = 255;            //MAXIMA VELOCIDAD DE LOS MOTORES
 int MIN_VEL = 150;             //MINIMA VELOCIDAD . MODIFICAR PARA AJUSTAR A TUS MOTORES
 int STOPPED = 0;              //VELOCIDAD DE PARADA
-
-
-
+int marcha=0;
 
 void setup() {
   
@@ -64,12 +62,14 @@ void loop() {
 //MARCHA ATRAS
       MarchaAtras();
       ActivaMotores();
+      ponVelocidadMotor(MIN_VEL);
       delay(2000);
 //GIRAR DEPENDIENDO DE DONDE ESTE EL GOLPE
  // GOLPE EN DERECHA - GIRO A IZQUIERDA
        if (buttonStateD == LOW){
          GiroEjeAIzquierda();
          ActivaMotores();
+         ponVelocidadMotor(MIN_VEL);
          delay(2000);
          Parar();
          DesactivaMotores();
@@ -79,19 +79,60 @@ void loop() {
        if (buttonStateI == LOW){
          GiroEjeADerecha();
          ActivaMotores();
+         ponVelocidadMotor(MIN_VEL);
          delay(2000);
          Parar();
          DesactivaMotores();
          delay(2000);
        }
   }else{
+     //COMPRUEBO DISTANCIA
+      Distancia=dameDistanciaUltraSonido();
+
+Serial.println(Distancia);
+
+delay(3000);
+
+     if (Distancia>=30)                 { marcha=3; }
+     
+     if ((Distancia<29)&&(Distancia>=21))  { marcha=2; }
+
+     if ((Distancia<20)&&(Distancia>=10))  { marcha=1; }
+
+     if (Distancia<=30)                 { marcha=-1; }
+     
+     switch(marcha){
+//SI DISTANCIA > 30 -> AVANZO RAPIDO
+     case 3:   ponVelocidadMotor(MAX_VEL);
+          break;
+//SI DISTANCIA 29 - 21  -> AVANZO MEDIAVELOCIDAD
+     case 2:  ponVelocidadMotor(((MAX_VEL-MIN_VEL)/2));
+          break;
+//SI DISTANCIA 20 - 10 -> AVANZO LENTO          
+     case 1:  ponVelocidadMotor(MIN_VEL);
+          break;
+//SI DISTANCIA MENOR 10 -> GIRAR
+     case -1:   
+         Parar();
+         DesactivaMotores();
+         GiroEjeADerecha();
+         ActivaMotores();
+         ponVelocidadMotor(MIN_VEL);
+         delay(2000);
+         break;
+      
+     }
+      
+      //SI DISTANCIA > 30 -> AVANZO RAPIDO
+      //SI DISTANCIA 29 - 21  -> AVANZO MEDIAVELOCIDAD
+      //SI DISTANCIA 20 - 10 -> AVANZO LENTO
+      //SI DISTANCIA MENOR 10 -> GIRAR
      Serial.println("AVANZAR");
       Avanzar();
       ActivaMotores();
+      ponVelocidadMotor(MIN_VEL);
   }
 }
-
-
 
 void comprobacion(){
 
@@ -99,7 +140,17 @@ void comprobacion(){
 }
 
 void ActivaMotores(){
-  ponVelocidadMotor(100);
+  ponVelocidadMotor(0);
+}
+
+void ponVelocidadMotor(int velocidad){
+   Serial.println("MOTORES A : ");
+   Serial.print("\t");  
+  Serial.println(velocidad);
+  Serial.println("RPM");
+  Serial.print("\t");  
+    analogWrite(enA, velocidad);
+    analogWrite(enB, velocidad);
 }
 
 void DesactivaMotores(){
@@ -131,10 +182,7 @@ void Parar(){
   digitalWrite(in4, LOW);
 }
 
-void ponVelocidadMotor(int velocidad){
-    analogWrite(enA, velocidad);
-    analogWrite(enB, velocidad);
-}
+
 
 void GiroEjeAIzquierda(){
    digitalWrite(in1, LOW);
